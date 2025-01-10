@@ -1,0 +1,70 @@
+\contentsline {chapter}{\numberline {}Allgemeine Einleitung}{1}
+\contentsline {chapter}{\numberline {1}Lokale geometrische Oberfl{\accent "7F a}chendynamik}{4}
+\contentsline {section}{\numberline {1.1}Einleitung}{4}
+\contentsline {section}{\numberline {1.2}Der zweidimensionale Fall}{5}
+\contentsline {subsection}{\numberline {1.2.1}Geometrische Oberfl{\accent "7F a}chendynamik}{5}
+\contentsline {subsection}{\numberline {1.2.2}Eine Klasse lokaler geometrischer Wachstumsmodelle}{6}
+\contentsline {subsection}{\numberline {1.2.3}Konstruktion einer ebenen Kurve aus einer vorge\-ge\-benen Funktion $ \kappa (s) $}{8}
+\contentsline {subsection}{\numberline {1.2.4}{\accent "7F U}ber die Existenz nicht\--kreis\-f{\accent "7F o}r\-mi\-ger sta\-tio\-n{\accent "7F a}\-rer L{\accent "7F o}\-sun\-gen beim lokalen geometrischen Wachstumsmodell}{11}
+\contentsline {subsection}{\numberline {1.2.5}Ein Beispiel}{13}
+\contentsline {subsubsection}{\numberline {1.2.5.1}Bestimmung s{\accent "7F a}mt\-licher sta\-tio\-n{\accent "7F a}\-rer L{\accent "7F o}\-sun\-gen}{14}
+\contentsline {subsubsection}{\numberline {1.2.5.2}Durchf{\accent "7F u}hrung der linearen Stabi\-lit{\accent "7F a}ts\-ana\-lyse}{15}
+\contentsline {subsubsection}{\numberline {1.2.5.3}Numerische Simulation}{18}
+\contentsline {subsection}{\numberline {1.2.6}Lokale Bifurkations\-analyse}{20}
+\contentsline {section}{\numberline {1.3}Der dreidimensionale Fall}{24}
+\contentsline {subsection}{\numberline {1.3.1}Erweiterung des lokalen geo\-me\-tri\-schen Wachs\-tums\-mo\-dells auf drei Di\-men\-sio\-nen}{24}
+\contentsline {subsection}{\numberline {1.3.2}Lokale Bifurkationsanalyse}{25}
+\contentsline {subsection}{\numberline {1.3.3}Skalare Invarianten}{35}
+\contentsline {subsection}{\numberline {1.3.4}Unendlich-langer Zylinder}{35}
+\contentsline {subsection}{\numberline {1.3.5}Ein Beispiel}{36}
+\contentsline {subsection}{\numberline {1.3.6}Globale Stabilit{\accent "7F a}t}{41}
+\contentsline {chapter}{\numberline {2}N{\accent "7F a}hrstoff\-modell}{44}
+\contentsline {section}{\numberline {2.1}Einleitung}{44}
+\contentsline {section}{\numberline {2.2}Modellgleichungen}{45}
+\contentsline {subsection}{\numberline {2.2.1}Modellbeschreibung}{45}
+\contentsline {subsection}{\numberline {2.2.2}Die Kontinuit{\accent "7F a}tsgleichungen}{46}
+\contentsline {subsection}{\numberline {2.2.3}Beschreibung des Transportes}{46}
+\contentsline {subsection}{\numberline {2.2.4}Beschreibung der Bewegung des Randes und Randbedingungen}{47}
+\contentsline {subsection}{\numberline {2.2.5}Zusammenfassung der Modellgleichungen}{48}
+\contentsline {subsection}{\numberline {2.2.6}Skalierung}{48}
+\contentsline {section}{\numberline {2.3}L{\accent "7F o}sungen, die nur vom Betrag des Ortsvektors ab\-h{\accent "7F a}n\-gen}{50}
+\contentsline {subsection}{\numberline {2.3.1}L{\accent "7F o}sungen mit bewegtem Rand}{50}
+\contentsline {subsection}{\numberline {2.3.2}Station{\accent "7F a}re L{\accent "7F o}sungen}{52}
+\contentsline {section}{\numberline {2.4}Der zweidimensionale Fall}{55}
+\contentsline {subsection}{\numberline {2.4.1}Lineare Sta\-bili\-t{\accent "7F a}ts\-ana\-lyse}{55}
+\contentsline {subsection}{\numberline {2.4.2}Lokale Bifurkationsanalyse}{57}
+\contentsline {subsection}{\numberline {2.4.3}Numerische Simulation}{58}
+\contentsline {section}{\numberline {2.5}Der dreidimensionale Fall}{61}
+\contentsline {subsection}{\numberline {2.5.1}Lineare Stabilit{\accent "7F a}ts\-ana\-lyse}{61}
+\contentsline {subsection}{\numberline {2.5.2}Lokale Bifurkationsanalyse}{62}
+\contentsline {subsection}{\numberline {2.5.3}Formulierung mit Greenschen Funktionen}{63}
+\contentsline {subsection}{\numberline {2.5.4}Numerische Simulation}{64}
+\contentsline {section}{\numberline {2.6}Ein kurzer Vergleich mit anderen Arbeiten}{69}
+\contentsline {chapter}{\numberline {}Zusammenfassung}{71}
+\contentsline {chapter}{\numberline {A}Rechnungen f{\accent "7F u}r die lokale geo\-metri\-sche Ober\-fl{\accent "7F a}\-chen\-dynamik}{74}
+\contentsline {section}{\numberline {A.1}Der zweidimensionale Fall}{74}
+\contentsline {subsection}{\numberline {A.1.1}Entwicklung der ben{\accent "7F o}tigten Gr{\accent "7F o}\ss en und lineare Sta\-bi\-li\-t{\accent "7F a}ts\-ana\-lyse\ um $B_{\unhbox \voidb@x \hbox {${\scriptstyle o}$}}(t,\varphi )$}{75}
+\contentsline {subsection}{\numberline {A.1.2}Entwicklung der ben{\accent "7F o}tigten Gr{\accent "7F o}\ss en um $B_{\unhbox \voidb@x \hbox {${\scriptstyle o}$}}(t)$}{76}
+\contentsline {subsection}{\numberline {A.1.3}Lineare Stabilit{\accent "7F a}tsanalyse um $B_{\unhbox \voidb@x \hbox {${\scriptstyle o}$}}(t)$}{77}
+\contentsline {subsection}{\numberline {A.1.4}Bifurkationsanalyse}{78}
+\contentsline {section}{\numberline {A.2}Der dreidimensionale Fall}{81}
+\contentsline {subsection}{\numberline {A.2.1}Entwicklung der ben{\accent "7F o}tigten Gr{\accent "7F o}\ss en}{81}
+\contentsline {subsection}{\numberline {A.2.2}Lineare Stabilit{\accent "7F a}tsanalyse}{82}
+\contentsline {subsection}{\numberline {A.2.3}{\accent "7F U}ber Ku\-gel\-fl{\accent "7F a}\-chen\-funk\-tio\-nen\ und die Operatoren $L_z$, $L_+$, $L_-$ und $L^2$}{83}
+\contentsline {subsection}{\numberline {A.2.4}{\accent "7F U}ber Produkte von Ku\-gel\-fl{\accent "7F a}\-chen\-funk\-tio\-nen}{84}
+\contentsline {subsection}{\numberline {A.2.5}Bifurkationsanalyse}{85}
+\contentsline {subsection}{\numberline {A.2.6}Lineare Stabili\-t{\accent "7F a}ts\-ana\-lyse eines un\-end\-lich\--lan\-gen Zylinders}{86}
+\contentsline {chapter}{\numberline {B}Rechnungen f{\accent "7F u}r das N{\accent "7F a}hr\-stoff\-modell}{88}
+\contentsline {section}{\numberline {B.1}Kurzer Einschub {\accent "7F u}ber Besselfunktionen}{88}
+\contentsline {subsection}{\numberline {B.1.1}Modifizierte Besselfunktionen der 1.\ Art}{88}
+\contentsline {subsection}{\numberline {B.1.2}Modifizierte sph{\accent "7F a}\-ri\-sche Besselfunktionen der 1.\ Art}{89}
+\contentsline {section}{\numberline {B.2}St{\accent "7F o}rung der Kugel}{89}
+\contentsline {subsection}{\numberline {B.2.1}Lineare Stabilit{\accent "7F a}tstanalyse}{91}
+\contentsline {subsection}{\numberline {B.2.2}Bifurkationsanalyse}{92}
+\contentsline {section}{\numberline {B.3}St{\accent "7F o}rung eines un\-end\-lich\--lan\-gen Zylinders}{95}
+\contentsline {section}{\numberline {B.4}St{\accent "7F o}rung zweier paralleler ebener Fl{\accent "7F a}chen}{96}
+\contentsline {chapter}{\numberline {C}Formeln f{\accent "7F u}r die Numerik}{99}
+\contentsline {section}{\numberline {C.1}Kr{\accent "7F u}mmung und zweite Ableitung nach der Bo\-gen\-l{\accent "7F a}n\-ge in Ab\-h{\accent "7F a}n\-gig\-keit von einem Kurvenparameter}{99}
+\contentsline {section}{\numberline {C.2}Die mittlere Kr{\accent "7F u}m\-mung und der La\-place\--Bel\-tra\-mi\--Ope\-ra\-tor f{\accent "7F u}r rotationssymmetrische K{\accent "7F o}r\-per in Ab\-h{\accent "7F a}n\-gig\-keit von einem Kurvenparameter}{100}
+\contentsline {chapter}{\numberline {}Literaturverzeichnis}{101}
+
