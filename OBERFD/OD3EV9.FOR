@@ -1,12 +1,12 @@
-C/D14KH    JOB RACF,CLASS=H,
-C/    MSGCLASS=X,MSGLEVEL=(2,0),NOTIFY=B06B
+C/D14KG    JOB RACF,CLASS=G,
+C/    MSGCLASS=X,MSGLEVEL=(2,0),NOTIFY=D14K
 C/E2          EXEC FORTCLG,REGION.FORT=3000K,REGION.GO=5000K
 C/FORT.SYSIN    DD *
 C
 C
-C       BESTE VERSION :   31.01.1991 (R.LIERMANN)
+C       BESTE VERSION :   11.02.1991 (R.LIERMANN)
 C
-C         MIT NORMIERTE LEGENDRE-POLYNOME (VERY EASY , VERY GOOD)
+C         MIT NORMIERTEN LEGENDRE-POLYNOMEN (VERY EASY, VERY GOOD)
 C
 C       ##################################################
 C       ####     EIGENWERTE DES LOKALEN               ####
@@ -34,10 +34,10 @@ C
 C
       IMPLICIT REAL*8 (A-H,K,O-Z)
 C
-      DOUBLE PRECISION  BK( 65),BKVOR( 65),BTH( 65),VN( 65)
-      DOUBLE PRECISION  TCOS( 65),TSIN( 65)
-      DOUBLE PRECISION  AL0( 65, 65), AL1( 65, 65) ,AL2( 65, 65)
-      DOUBLE PRECISION                AL3( 65, 65) ,AL4( 65, 65)
+      DOUBLE PRECISION  BK( 50),BKVOR( 50),BTH( 50),VN( 50),BKMEM( 50)
+      DOUBLE PRECISION  TCOS( 50),TSIN( 50)
+      DOUBLE PRECISION  AL0( 50, 50), AL1( 50, 50) ,AL2( 50, 50)
+      DOUBLE PRECISION                AL3( 50, 50) ,AL4( 50, 50)
       DOUBLE PRECISION  PI, DTH , EPS1
       DOUBLE PRECISION  XLBK , XKAP
       DOUBLE PRECISION  B0S ,B0S2,B0S3,B0S4,B0S5,B0S6,B0S7,B0S8,B0S9
@@ -56,30 +56,29 @@ C
       DOUBLE PRECISION  K0    ,K0T   ,K0TT
       DOUBLE PRECISION  B0    ,B0T   ,B0TT  ,B0TTT ,B0TTTT
       DOUBLE PRECISION  COSTH ,SINTH
-      DOUBLE PRECISION  RPLM(0:4,1:800)
-CCC   DOUBLE PRECISION  RPLMEM(0:4,0:8,1:48,1:800)
-CC    DOUBLE PRECISION  RPLMEM(0:4,0:4,1:16,1:200)
-      DOUBLE PRECISION  RPLMEM(0:4,0:5,1:16,1:200)
-      DOUBLE PRECISION  EVM(0:8,1:48,1:48)
-      DOUBLE PRECISION  ERMEM( 432)
-      DOUBLE PRECISION  APL0( 65,800), APL1( 65,800),APL2( 65,800)
-      DOUBLE PRECISION              APL3( 65,800),APL4( 65,800)
+      DOUBLE PRECISION  RPLM(0:4,1:200)
+      DOUBLE PRECISION  RPLMEM(0:4,0:8,1:16,1:200)
+      DOUBLE PRECISION  EVM(0:8,1:16,1:16)
+      DOUBLE PRECISION  ERMEM( 151)
+      DOUBLE PRECISION  APL0( 50,200), APL1( 50,200),APL2( 50,200)
+      DOUBLE PRECISION              APL3( 50,200),APL4( 50,200)
 C
-      INTEGER           N,N4,NG,    CPUSEC
-      INTEGER           NCOUNT,NCC,NCCFP,NCC1
+      INTEGER           N,N4,       CPUSEC
+      INTEGER           NCOUNT,NCC,NCCFP
       INTEGER           K,J,L,M,MS
       INTEGER           MMAX,LMTOT,LMC,LMCS, MODE
-      CHARACTER*30      FNW1,FNW2,FNW3
+      CHARACTER*30      FNW1,FNW2,FNW3,FNW4,FNR1
       CHARACTER*1       ITFLAG
+      CHARACTER*1       CITHIS(40)
 C
       INTEGER           ICON
 C
-      DOUBLE PRECISION  A( 48, 48)
-      DOUBLE PRECISION  EV( 48, 48)
-      DOUBLE PRECISION  EI( 48),ER( 48)
-      DOUBLE PRECISION  VX( 48)
+      DOUBLE PRECISION  A( 16, 16)
+      DOUBLE PRECISION  EV( 16, 16)
+      DOUBLE PRECISION  EI( 16),ER( 16)
+      DOUBLE PRECISION  VX( 16)
 C
-      DOUBLE PRECISION  ERSORT(48)
+      DOUBLE PRECISION  ERSORT(16)
 C
       DOUBLE PRECISION  FNV0,FNV1,VA1,VA2,VA3,K00,X1
       FNV0(VA1,VA2,VA3,K00,X1)
@@ -94,27 +93,29 @@ C       **************************************************
 C       ****      PARAMETER PARAMETER PARAMETER       ****
 C       **************************************************
 C
-                 FNW1  = 'D14K.TES1.DATA'
-                 FNW2  = 'D14K.TES2.DATA'
-                 FNW3  = 'D14K.TES3.DATA'
-CC               FNW1  = 'B06B.RLOD3G.DATA'
-CC               FNW2  = 'B06B.RLOD3E.DATA'
+                 FNR1  = 'D14K.TESTR1.DATA'
+                 FNW1  = 'D14K.TESTW1.DATA'
+                 FNW2  = 'D14K.TESTW2.DATA'
+                 FNW3  = 'D14K.TESTW3.DATA'
+                 FNW4  = 'D14K.TESTW4.DATA'
                  K00 =          2.000000D0
-                 VA1   =        1.D0
-                 VA2   =        0.D0
-                 VA3   =       -1.D0
+                 VA1   =        1.0000D0
+                 VA2   =        0.0000D0
+                 VA3   =       -1.0000D0
                  B0    =        2.D0/K00
                  GAMMA2=B0*B0*FNV1(VA1,VA2,VA3,K00,K00)/2.D0/3.D0
-                 NG    =         2
-                 NW    =         0
-                 N4    =        21
+                 NWRITE=         1
+                 NREAD =         1
+                 N4    =        25
                  N     =       N4*4
                  EPS1  =         1.D-12
                  LMTOT =        16
+                 MMAX  =         8
+                 NPTEV =       200
                  MMAX  =         5
-                 NPTEV =       4
-C   ----->    0<=MMAX<=8 , 1<= NPTEV <= 800  , 1<= LMTOT <=48
-C   ----->    1<=N4 <= 64
+                 NPTEV =       5
+C   ----->    0<=MMAX<=8 , 1<= NPTEV <= 200  , 1<= LMTOT <=16
+C   ----->    1<=N4 <= 49
 C ----> LMTOT X LMTOT IST DIE GROESSE DER EIGENWERT-MATRIX
 C ----> NPTEV IST DIE ANZAHL DER STUETZPUNKTE ZWISCHEN 0 UND PI.
 C ----> MMAX  ES WERDEN DIE M VON 0 BIS MMAX BETRACHTET.
@@ -201,7 +202,7 @@ C     **********************************************************
       DO 120 I=1,N4+1
        HI=I-1
        DO 122 J=1,N4+1
-        IF (J .EQ. N4+1 .AND. NG .EQ. 2) THEN
+        IF (J .EQ. N4+1 ) THEN
            AL0(I,N4+1)=ZERO
            AL1(I,N4+1)=ZERO
            AL2(I,N4+1)=ZERO
@@ -266,27 +267,35 @@ C     **********************************************************
 C
       NCOUNT=0
 C     >>>> NCOUNT IST DER EIGENWERT-ZAEHLER.
-      IF(NW .EQ. 1) OPEN(22,FILE=FNW1)
-      IF(NW .EQ. 1) REWIND 22
-      IF(NW .EQ. 1) OPEN(23,FILE=FNW2)
-      IF(NW .EQ. 1) REWIND 23
-      IF(NW .EQ. 1) OPEN(24,FILE=FNW3)
-      IF(NW .EQ. 1) REWIND 24
-      IF (NW .EQ. 1) THEN
-C        WRITE(22,1118) NCOUNT
-         WRITE(22,1116) '   N4=  ',N4,  '  EPS1= ', EPS1,' MMAX= ',MMAX
-     &                ,' LMTOT= ',LMTOT,' NPTEV= ',NPTEV
-         WRITE(22,1112) 'GAMMA','A(2)','B(TH=0)','B(TH=PI/2)'
-     &                         ,'NCC','SVNQU'
-C
-         WRITE(23,1116) '   N4=  ',N4,  '  EPS1= ', EPS1,' MMAX= ',MMAX
-     &                ,' LMTOT= ',LMTOT,' NPTEV= ',NPTEV
-         WRITE(23,1112) ' A(2)','EIGENWERT','MODE M','SVNQUT'
-         WRITE(24,1112) 'GAMMA','A(2)','B(TH=0)','B(TH=PI/2)'
-         WRITE(24,*) ' DANACH KOMMEN DIE BK(I), I=1,N4+1 '
- 1112    FORMAT(4(1X,A12),1(1X,A8),1(1X,A12))
- 1116    FORMAT(1X,A8,I4,A8,1PE12.5,3(A8,I4))
- 1118    FORMAT(5X,I8)
+CC    IF(NWRITE .EQ. 1) OPEN(22,FILE=FNW1,STATUS='SHR')
+      IF(NWRITE .EQ. 1) OPEN(22,FILE=FNW1)
+      IF(NWRITE .EQ. 1) REWIND 22
+      IF(NWRITE .EQ. 1) OPEN(23,FILE=FNW2)
+      IF(NWRITE .EQ. 1) REWIND 23
+      IF(NWRITE .EQ. 1) OPEN(24,FILE=FNW3)
+      IF(NWRITE .EQ. 1) REWIND 24
+      IF(NWRITE .EQ. 1) OPEN(25,FILE=FNW4)
+      IF(NWRITE .EQ. 1) REWIND 25
+      IF(NREAD  .EQ. 1) OPEN(26,FILE=FNR1)
+      IF(NREAD  .EQ. 1) REWIND 26
+      IF (NWRITE .EQ. 1) THEN
+         WRITE(22,1117) ' VA1=',VA1,' VA2=',VA2,' VA3=',VA3,' N4=',N4
+     &   ,' EPS1=',EPS1,'  MMAX=',MMAX,' LMTOT=',LMTOT,' NPTEV=',NPTEV
+         WRITE(22,*) 'GAMMA      A(2)       B(TH=0)        B(TH=PI/2)'
+     &                         ,'   NCC       SVNQU'
+         WRITE(23,1117) ' VA1=',VA1,' VA2=',VA2,' VA3=',VA3,' N4=',N4
+     &   ,' EPS1=',EPS1,'  MMAX=',MMAX,' LMTOT=',LMTOT,' NPTEV=',NPTEV
+         WRITE(23,*) ' A(2)',' SQRT(ABS(REAL(EV)))*SIGN(REAL(EV))'
+     &                        ,' MODE M',' SVNQUT'
+         WRITE(24,1117) ' VA1=',VA1,' VA2=',VA2,' VA3=',VA3,' N4=',N4
+     &   ,' EPS1=',EPS1,'  MMAX=',MMAX,' LMTOT=',LMTOT,' NPTEV=',NPTEV
+         WRITE(24,*) 'GAMMA  A(2) B(TH=0) B(TH=PI/2) NCC SVNQU'
+     &              ,' DANACH KOMMEN DIE BK(I), I=1,N4+1 '
+         WRITE(25,1117) ' VA1=',VA1,' VA2=',VA2,' VA3=',VA3,' N4=',N4
+     &   ,' EPS1=',EPS1,'  MMAX=',MMAX,' LMTOT=',LMTOT,' NPTEV=',NPTEV
+         WRITE(25,*) 'VARIA  '
+     &              ,' DANACH KOMMEN DIE BK(I), I=1,N4+1 '
+ 1117    FORMAT(3(A5,F4.1),1(A4,I2),1(A6,1PE10.3),3(A7,I3))
        ENDIF
 C
 C     **********************************************************
@@ -306,72 +315,93 @@ C
 C     GAMMAK = GAMMA2 - ZERO* (ONE/C6P)+(ONE/C8P)
 C     GAMMAK = GAMMA2 - .0000D0
       GAMMAK = 0.1667D0
-CC    GAMMAK = 0.1665D0
-CC    BK(1) = 1.34948D0
-CC    BK(2) = 0.19416D0
-CC    BK(3) = 0.01336D0
-CC    BK(4) =-0.00211D0
-CC    BK(5) =-0.00041D0
-CC    GAMMAK= 0.12078D0
-CC    BK(1) = 1.32865D0
-CC    BK(2) = 0.22073D0
-CC    BK(3) = 0.01671D0
-CC    BK(4) =-0.00328D0
-CC    BK(5) =-0.00064D0
-CC    GAMMAK= 0.10733D0
-      IF (NG .EQ. 2) BK(N4+1)=GAMMAK
+      BK(N4+1)=GAMMAK
+C
       DO 222 I=1,N4+1
-        IF (NG .EQ. 2 .AND. I .EQ. 2) GOTO 222
+        IF (I .EQ. 2) GOTO 222
         BKVOR(I)=BK(I)
   222 CONTINUE
+C
+      DELVAR=0.002D0
+      VARSTA=0.002D0
+      VAREND=2.000D0
+      IF (NREAD.EQ.1) THEN
+         READ(26,*) VARVOR
+         READ(26,*) (BKVOR(I),I=1,N4+1)
+         READ(26,*) VARLST
+         READ(26,*) (BK(I),I=1,N4+1)
+         DELVAR=VARLST-VARVOR
+         VARSTA=VARLST+DELVAR
+         VAREND=DELVAR*2000.D0
+      ENDIF
+C
 C
 C     **********************************************************
 C     ***  HIER FAENGT DER GROSSE LOOP AN
 C     **********************************************************
 C
-      DO 9000 VARIA =  0.0100D0 ,  2.0001D0 ,  0.0200D0
-CC    DO 9000 VARIA =  0.0010D0 ,  1.0001D0 ,  0.0020D0
-CC    DO 9000 VARIA = -0.0005D0 , -0.5000D0 , -0.0010D0
-C        IF (VARIA .GT. ZERO) GOTO 4999
-C
-C
-C
+      DO 9000 VARIA =  VARSTA, VAREND, DELVAR
 C
         BK(2)=  VARIA  * DSQRT(C2P/C5P)
-CC      IF (BK(2) .LT. 0.22072D0) GOTO 9000
-      DO 322 I=1,N4+1
-        IF (NG .EQ. 2 .AND. I .EQ. 2) GOTO 322
-        H11 = BK(I)
-        BK(I)= BK(I) + (BK(I) - BKVOR(I))
-        BKVOR(I)=H11
-  322 CONTINUE
+        DO 322 I=1,N4+1
+          IF (I .EQ. 2) GOTO 322
+          H11 = BK(I)
+          BK(I)= BK(I) + (BK(I) - BKVOR(I))
+          BKVOR(I)=H11
+  322   CONTINUE
         NCC=0
         NCCFP=0
-        NCC1=0
   109   CONTINUE
         NCCFP=NCCFP+1
-        IF (NCCFP-1 .EQ. 1000 )  NCCFP=1
+CC      IF (NCCFP-1 .EQ. 1000 )  NCCFP=1
         SVNQUA=1.D50
         SVNQ99=-1.D50
-        IACTM = 0
+        IACTM = 5
+        N4MR=9
 C
  1778 NCC=NCC+1
-      IACT = IACTM + 1
-      IF (IACT .EQ. 2) IACT =IACT + 1
-      IF (IACT .EQ. N4+2) IACT = 1
-      IACTM = IACT
+      IACTM= IACTM + 1
+      IF (IACTM .EQ. N4+N4MR+2) IACTM = 1
+      IF (IACTM .EQ. 2   ) IACTM= 3
+      IACT=IACTM
+      IF (IACTM .EQ. N4+2) IACT = 1
+      IF (IACTM .EQ. N4+3) IACT = 3
+      IF (IACTM .EQ. N4+4) IACT = 4
+      IF (IACTM .EQ. N4+5) IACT = 5
+      IF (IACTM .EQ. N4+6) IACT = 6
+      IF (IACTM .EQ. N4+7) IACT = 7
+      IF (IACTM .EQ. N4+8) IACT = 8
+      IF (IACTM .EQ. N4+9) IACT = 9
+      IF (IACTM .EQ. N4+10)IACT = N4+1
 C
-      IF (IACT .EQ. N4+1) DELDK = .0010D0*0.5D0**1
-      IF (IACT .LT. N4+1) DELDK = .0010D0*0.5D0**IACT
+      IF (NCC .LE. N4) THEN
+        BKABS=DABS(BK(IACT))
+        IF (IACT .EQ. N4+1) BKABS=DABS(.166666666D0 - BK(N4+1))
+        IF (IACT .EQ.    1) BKABS=DABS(DSQRT(2.D0)  - BK(   1))
+        DELDK = 1.D0
+        IF (DELDK .GT. BKABS) DELDK=BKABS*.001D0
+        DELDK=DMAX1(DELDK,0.0001D0*.6D0**IACT)
+        IF (BKABS .LT. 1.D-15) DELDK=1.D-05
+      ELSE
+        DELDK=1.D0
+        BKABS=DABS(BK(IACT)-BKMEM(IACT))
+        IF (DELDK .GT. BKABS) DELDK=BKABS*1.50D0
+CC      DELDK=DMAX1(DELDK,0.0001D0*.4D0**IACT)
+CC      IF (NCC .GT. 10*N4) DELDK=BKABS*.1D0
+CC      IF (NCC .GT. 100*N4) DELDK=BKABS*.01D0
+        IF (BKABS .LT. 1.D-15) DELDK=1.D-15
+      ENDIF
+C
       DELDKM = DELDK
       NCC9 = 0
 C
       ITFLAG='1'
-      BKMEM = BK(IACT)
+      BKMEM(IACT) = BK(IACT)
 C
  1777 CONTINUE
       SVNQUN=ZERO
       NCC9 = NCC9 + 1
+      CITHIS(NCC9)=ITFLAG
       GAMMAK = BK(N4+1)
       DO 140 I=1,N4+1
        B0S = ZERO
@@ -476,11 +506,15 @@ C
         SVNQUN=SVNQUN+(VN(I)*VN(I))
         BTH(I) = B0S
   140 CONTINUE
+CC    SVNQUN=DSQRT(SVNQUN)
 C
 CC    IF (VARIA .GT. ZERO) GOTO 4993
 CCC   WRITE (6,*)  ITFLAG,BK(IACT) , SVNQUN,DELDK
-      IF (DELDK  .LT. 1.D-05*DELDKM) GOTO 1912
-      IF (NCC9   .GE.  50   ) GOTO 1912
+      IF (DELDK  .LT. 1.D-06*DELDKM .AND. NCC .LE. 10*N4) GOTO 1912
+      IF (DELDK  .LT. 1.D-05*DELDKM .AND. NCC .LE.100*N4) GOTO 1912
+      IF (DELDK  .LT. 1.D-04*DELDKM .AND. NCC .GT.100*N4) GOTO 1912
+      IF (DELDK .LT. 1.D-20) GOTO 1912
+      IF (NCC9   .GE.  20   ) GOTO 1912
       IF (ITFLAG .EQ. '1') THEN
           BKC = BK(IACT)
           SVNQUC = SVNQUN
@@ -522,6 +556,8 @@ C
         ITFLAG='C'
          IF (SVNQUL .LT. SVNQUC .AND. SVNQUL .LT. SVNQUR) ITFLAG='L'
          IF (SVNQUR .LT. SVNQUC .AND. SVNQUR .LT. SVNQUL) ITFLAG='R'
+CC       WRITE(6,'(1X,A1,4(1X,1PE14.7))') ITFLAG,BKL,BKC,BKR,DELDKM
+CC       WRITE(6,'(2X,4(1X,1PE14.7))') SVNQUL,SVNQUC,SVNQUR,DELDK
  1451    IF (ITFLAG .EQ. 'L') THEN
              BKR = BKC
              BKC = BKL
@@ -550,44 +586,43 @@ C
         SVNQU1 = SVNQUL*DA1L + SVNQUC*DA1C + SVNQUR*DA1R
         IF (DABS(SVNQU2) .GT. 1.D-70) THEN
             BK(IACT)   = BKC - SVNQU1/ SVNQU2
+            BK(IACT)=DMIN1(BK(IACT),BKC+(BKR-BKC)*.95D0)
+            BK(IACT)=DMAX1(BK(IACT),BKC-(BKC-BKL)*.95D0)
         ELSE
-            BK(IACT) = BKC
+            IF (SVNQU1 .LT. 0.0D0) BK(IACT)=BKC-(BKC-BKL)*.05D0
+            IF (SVNQU1 .GT. 0.0D0) BK(IACT)=BKC+(BKR-BKC)*.05D0
         ENDIF
-        IF (BK(IACT) .GE. BKL .AND. BK(IACT) .LE. BKR) THEN
-          SVNQ99 = SVNQUC
-CC        IF (BK(IACT) .LT. BKC - (BKC-BKL)*.1D0 .OR.
-CC   &        BK(IACT) .GT. BKC + (BKR-BKC)*.1D0) THEN
-             IF (BK(IACT) .LT. BKC) THEN
-                BKR = BKC
-                SVNQUR = SVNQUC
-             ELSE
-                BKL = BKC
-                SVNQUL = SVNQUC
-             ENDIF
-CC           DELDK = DMIN1( DABS(H1) , DABS(H2) )
-CC        ELSE
-CC           ITFLAG = '1'
-             DELDK = DELDK*.050D0
-CC        ENDIF
-          GOTO 1777
-        ELSE
-          IF (SVNQU1   .LE. 0.D0) ITFLAG='R'
-          IF (SVNQU1   .GT. 0.D0) ITFLAG='L'
-          GOTO 1451
+        SVNQ99 = SVNQUC
+        IF (BK(IACT) .LT. BKC) THEN
+            BKR = BKC
+            SVNQUR = SVNQUC
+          ELSE
+            BKL = BKC
+            SVNQUL = SVNQUC
         ENDIF
+CCC     DELDK = DMIN1( DABS(H1) , DABS(H2) )
+CCC     ITFLAG = '1'
+        DELDK = DELDK*.050D0
+        GOTO 1777
 C
  1912 CONTINUE
+      SVNQUX=SVNQUA
       IF(SVNQUN .LT. SVNQUA ) THEN
           SVNQUA = SVNQUN
        ELSE
-          BK(IACT) = BKMEM
+          BK(IACT) = BKMEM(IACT)
       ENDIF
-      IF (MOD(NCC-1, 67) .EQ. 0)
-     &WRITE(6,1219) NCC,IACT,NCC9 , SVNQUA , BK(IACT) ,DELDK
- 1219 FORMAT(1X,'NCC=',I5,' IACT=',I3,' NCC9=',I3,' QU=',1PE10.3
-     &                ,' BK(IACT)=',1PE11.4,' DELDK=',1PE10.3)
+      IF (MOD(NCC-1, 4*(N4+N4MR)+1) .EQ. 0) THEN
+          WRITE(6,*) 'IACT=',IACT,' NCC=',NCC,' NCC9=',NCC9
+     &              ,'CITHIS=',(CITHIS(K),K=1,NCC9)
+          WRITE(6,1219) 'SVNQUA=',SVNQUX,' BKMEM=',BKMEM(IACT)
+     &                 ,'DELDKM=',DELDKM
+          WRITE(6,1219) 'SVNQUN=',SVNQUN,'    BK=',BK(IACT)
+     &                 ,' DELDK=',DELDK
+      ENDIF
+ 1219 FORMAT(3(1X,A7,1PE18.11))
 C
-      IF (SVNQUA .GT. EPS1 .AND. NCC .LT. 20000) GOTO 1778
+      IF (SVNQUA .GT. EPS1 .AND. NCC .LT. 60000) GOTO 1778
 C
 C
 C
@@ -606,41 +641,33 @@ C
 C
  1122 FORMAT(1X,A22,1X,I8,2(1X,A6,F12.7))
  1123 FORMAT(8(1X,F9.5))
-C     IF (NCCFP .EQ. 1) WRITE (6,*) ' GAMMA=',GAMMAK
-C       IF (NCCFP .EQ. 1)
-C    &     WRITE(6,1005) 'NCC=', NCC , ' I=', I, 'DBK=', INHB(I)
-C    &               ,   ' BK=', BK(I), ' VN=', VN(I), 'BTH=', BTH(I)
- 1005 FORMAT(1X,A4,I6,1X,A3,I4,4(1X,A4,1PE10.3))
 C4993 CONTINUE
-C     DO 4994 I=1,N4+1
-C        WRITE(24,*)   BTH(I)*TCOS(I) , BTH(I)*TSIN(I)
-C4994 CONTINUE
-C     DO 4995 I=N4 , 1 , -1
-C        WRITE(24,*)  -BTH(I)*TCOS(I) , BTH(I)*TSIN(I)
-C4995 CONTINUE
-C     DO 4996 I=2,N4+1
-C        WRITE(24,*)  -BTH(I)*TCOS(I) ,-BTH(I)*TSIN(I)
-C4996 CONTINUE
-C     DO 4997 I=N4 ,1 , -1
-C        WRITE(24,*)   BTH(I)*TCOS(I) ,-BTH(I)*TSIN(I)
-C4997 CONTINUE
 C
 C
 C ---->  LOESUNG GEFUNDEN.
-      IF (NW .EQ. 1) THEN
-C        WRITE(22,1111) BK(N4+1),BK(2),BTH(1),BTH(N4+1),NCC,SVNQUN
+      IF (NWRITE .EQ. 1) THEN
          WRITE(22,1111) GAMMAK  ,BK(2),BTH(1),BTH(N4+1),NCC,SVNQUN
          WRITE(24,1111) GAMMAK  ,BK(2),BTH(1),BTH(N4+1),NCC,SVNQUN
          WRITE(24,1123) (BK(I),I=1,N4+1)
+         WRITE(25,1006) VARIA
+         WRITE(25,1006) (BK(I),I=1,N4+1)
  1111    FORMAT(4(1X,1PE12.5),1(1X,I8),1(1X,1PE12.5))
+ 1005    FORMAT(2(1X,1PE12.5))
+ 1006    FORMAT(4(1X,1PE19.12))
+         WRITE(24,1005)
+     &        (  BTH(   I)*TCOS(   I), BTH(   I)*TSIN(   I) ,I=1,N4+1)
+         WRITE(24,1005)
+     &        ( -BTH(N4-I)*TCOS(N4-I), BTH(N4-I)*TSIN(N4-I) ,I=0,N4-1)
+         WRITE(24,1005)
+     &        ( -BTH(   I)*TCOS(   I),-BTH(   I)*TSIN(   I) ,I=2,N4+1)
+         WRITE(24,1005)
+     &        (  BTH(N4-I)*TCOS(N4-I),-BTH(N4-I)*TSIN(N4-I) ,I=0,N4-1)
       ENDIF
 C
 C
 C ---->  EIGENWERTE BERECHNEN
 C ---->                       EIGENWERTE BERECHNEN
 C ---->                                            EIGENWERTE BERECHNEN
-C4999 CONTINUE
-C
 C
 C
 C ----> DELETE EIGENVALUE - MATRIX
@@ -1140,14 +1167,16 @@ C
  7000 CONTINUE
 C
       MODE = 1
-      CALL DEIG1(A, 48,LMTOT,MODE,ER,EI,EV,VX,ICON)
+      CALL DEIG1(A, 16,LMTOT,MODE,ER,EI,EV,VX,ICON)
       CALL SORTIE(ER,ERSORT,LMTOT)
       DO 7152 K=1,LMTOT
-        ERMEM(K+M*(MMAX+1))=ERSORT(K)
+        ERMEM(K+M*LMTOT)=ERSORT(K)
 C       WRITE(6,*) ER(K),ERSORT(K)
+        IF (ERSORT(K) .GT. 0.0D0) ERSORT(K)=  DSQRT(ERSORT(K))
+        IF (ERSORT(K) .LT. 0.0D0) ERSORT(K)= -DSQRT(DABS(ERSORT(K)))
  7152 CONTINUE
 C
-      IF (NW .EQ. 1) THEN
+      IF (NWRITE .EQ. 1) THEN
         DO 7200 LCM = 1 , MIN(MMAX+1 -IABS(M),LMTOT)
 C       DO 7200 LCM = 1 , MIN(MMAX+2 -IABS(M),LMTOT)
           WRITE(23,7211) BK(2), ERSORT(LCM),M,SVNQUT
@@ -1163,25 +1192,31 @@ C
 C
       CALL CLOCK(CPUSEC)
       WRITE(6,7840) 'MAX. EV VON M=0:',ERMEM(1),'CPU-TIME(SEC):',CPUSEC
+      WRITE(6,7841) 'MAX. EV VON M=1:',ERMEM(1+1*LMTOT)
+     &             ,'MAX. EV VON M=2:',ERMEM(1+2*LMTOT)
       WRITE(6,*) ' SVNQUT = ',SVNQUT,' SVNQU =',SVNQUN
- 7840 FORMAT(1X,A20,1PE12.5,A16,I8)
+ 7840 FORMAT(1X,A20,1PE12.5,A20,I8)
+ 7841 FORMAT(1X,A20,1PE12.5,A20,1PE12.5)
 CC    WRITE(6,7846) ' MAX. EIGENWERTE          CPU-TIME(SEC): ', CPUSEC
 CC    DO 7842 M=0,MIN(4,MMAX)
-CC        WRITE(6,7847) M,(ERMEM(K+M*(MMAX+1)),K=1, MIN(5,LMTOT) )
+CC        WRITE(6,7847) M,(ERMEM(K+M*LMTOT),K=1, MIN(5,LMTOT) )
  7842 CONTINUE
  7846 FORMAT(1X,A40,I8)
  7847 FORMAT(1X,I4,5(1X,1PE12.5))
 
 C
 C
-      IF (CPUSEC .GT. 100*60) STOP
-CC    IF (CPUSEC .GT.   300 ) STOP
-CC    IF (CPUSEC .GT.  10*60) STOP
+      IF (NCC .GE. 60000) GOTO 9999
+CC    IF (CPUSEC .GT. 115*60) GOTO 9999
+      IF (CPUSEC .GT.  50*60) GOTO 9999
 C
  9000 CONTINUE
-      IF(NW .EQ. 1) CLOSE(22,STATUS='KEEP')
-      IF(NW .EQ. 1) CLOSE(23,STATUS='KEEP')
-      IF(NW .EQ. 1) CLOSE(24,STATUS='KEEP')
+ 9999 CONTINUE
+      IF(NWRITE .EQ. 1) CLOSE(22,STATUS='KEEP')
+      IF(NWRITE .EQ. 1) CLOSE(23,STATUS='KEEP')
+      IF(NWRITE .EQ. 1) CLOSE(24,STATUS='KEEP')
+      IF(NWRITE .EQ. 1) CLOSE(25,STATUS='KEEP')
+      IF(NREAD  .EQ. 1) CLOSE(26,STATUS='KEEP')
       STOP
       END
 C >>>> SUBROUTINES
@@ -1289,7 +1324,7 @@ C  ---> -1.D0<=X<=1.D0 AND L=0,1,2,3,4,.... AND M=-L,-L+1,.....,L-1,L
 C       >>>> SORTIEREN DER GROESSE NACH.
 C       >>>> INPUT : IN , N  (WIRD NICHT VERAENDERT)
 C       >>>> OUTPUT: OUT
-        DOUBLE PRECISION IN(  48), OUT( 48) ,H1
+        DOUBLE PRECISION IN(  16), OUT( 16) ,H1
         INTEGER N,I,J,K
         IF (N .LE. 0) RETURN
         IF (N .EQ. 1) OUT(1)=IN(1)
