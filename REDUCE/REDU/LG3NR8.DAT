@@ -1,0 +1,21 @@
+OFF NAT$ ON DIV$            B1:=0$ C2:=0$ D1:=0$
+INV1:=(A*A + B1*B1 + B2*B2 + C1*C1 + C2*C2 + D1*D1 + D2*D2)$
+INV2:=(A*KA + B1*KB1 + B2*KB2 + C1*KC1 + C2*KC2 + D1*KD1 + D2*KD2)$
+INV3:=(KA*KA + KB1*KB1 + KB2*KB2 + KC1*KC1 + KC2*KC2 + KD1*KD1
+       + KD2*KD2) $
+INV3S:=SUB(ALP=1,EPS=0,BET=0, (A*OKA + B1*OKB1 + B2*OKB2
+                 + C1*OKC1 + C2*OKC2 + D1*OKD1 + D2*OKD2) )/ 3   $
+INV4:=SUB(ALP=1,EPS=0,BET=0, (KA*OKA + KB1*OKB1 + KB2*OKB2
+                 + KC1*OKC1 + KC2*OKC2 + KD1*OKD1 + KD2*OKD2) )/3  $
+I1:=INV1$  I2:=INV2$ I3:=INV3$ I3S:=INV3S$ I4:=INV4$
+%  I2:=( O(I1) -2*EPS*I1 -2*BET*I1 * I1 ) / ( 2 * ALP)$
+%  I3:=( O(I2) -4*EPS*I2 -4*BET*I1 * I2 ) / ( 4 * ALP)$
+%  I4:=( O(I3) -6*EPS*I3 -6*BET*I1 * I3 ) / ( 6 * ALP)$
+  F1111:=QQ**3*(7/3 - 3 + 1 + 2/3) + Q*QQ**2*(315 + 77)/147
+        + Q**2*QQ*295/147 + Q**3*50/147;    F22 :=QQ*2/3 + Q*77/147;
+  F112 := QQ**2*(-14/3 +3 -4/3) + Q*QQ*(-2*315 - 2*77 )/147
+        + Q**2*(- 295)/147;       F13 :=QQ*7/3 + Q*315/147;
+  I4PROB:=F1111*I1**4 +F112*I1**2*I2 +F22*I2**2 +F13*I1*I3$
+  GL1:=21*I2 - 5 *I1*I1$  GL2:=441*I3 - 25 *I1*I1*I1$
+  GL3:=21*I2 - 30*I1*I1$  GL4:=441*I3 - 900*I1*I1*I1$   $END$
+

@@ -1,0 +1,8 @@
+  IF NOT(NUMBERP COUNTIN) THEN COUNTIN:=0$                              00001014
+  COUNTIN:=COUNTIN+1$                                                   00009514
+  IF COUNTIN = 1 THEN IN REDUCE(LG3NR1  );                              00009601
+  IF COUNTIN = 2 THEN IN REDUCE(LG3NR2  );                              00009701
+  IF COUNTIN = 3 THEN IN REDUCE(LG3NR3  );                              00009801
+  COUNTIN:=0$                                                           00010014
+  $END$                                                                 00010114
+

@@ -1,0 +1,19 @@
+K1C1:=(   6*SQRT(5)*A*B2**2 - 6*SQRT(5)*A*B1**2 + 30*SQRT(5)*B2*C2*D1
+    - 30*SQRT(5)*B2*C1*D2 + 30*SQRT(5)*B1*C2*D2 + 30*SQRT(5)*B1*
+    C1*D1 + 45*SQRT(3)*A**2*C1 + 30*SQRT(3)*A*B2*D2 + 30*SQRT(3)*
+    A*B1*D1 + 20*SQRT(3)*B2**2*C1 + 20*SQRT(3)*B1**2*C1 + 5*SQRT(
+    3)*C2**2*C1 + 5*SQRT(3)*C1**3 + 30*SQRT(3)*C1*D2**2 + 30*SQRT
+    (3)*C1*D1**2    ) /(21*SQRT(3))$
+K1C2:=( - 12*SQRT(5)*A*B2*B1 + 30*SQRT(5)*B2*C2*D2 + 30*SQRT(5)*B2*
+    C1*D1 - 30*SQRT(5)*B1*C2*D1 + 30*SQRT(5)*B1*C1*D2 + 45*SQRT(3
+    )*A**2*C2 - 30*SQRT(3)*A*B2*D1 + 30*SQRT(3)*A*B1*D2 + 20*SQRT
+    (3)*B2**2*C2 + 20*SQRT(3)*B1**2*C2 + 5*SQRT(3)*C2**3 + 5*SQRT
+    (3)*C2*C1**2 + 30*SQRT(3)*C2*D2**2 + 30*SQRT(3)*C2*D1**2   )
+    / (21*SQRT(3))$
+K1D1:=(   6*SQRT(5)*B2**2*B1 + 10*SQRT(5)*B2*C2*C1 - 2*SQRT(5)*B1**3 -
+    5*SQRT(5)*B1*C2**2 + 5*SQRT(5)*B1*C1**2 - 5*SQRT(3)*A**2*D1
+    - 10*SQRT(3)*A*B2*C2 + 10*SQRT(3)*A*B1*C1 + 10*SQRT(3)*C2**2
+    *D1 + 10*SQRT(3)*C1**2*D1 + 10*SQRT(3)*D2**2*D1 + 10*SQRT(3)*
+    D1**3     ) /(7*SQRT(3))$
+ $END$
+

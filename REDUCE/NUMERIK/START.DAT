@@ -1,0 +1,8 @@
+  IF NOT(NUMBERP COUNTIN) THEN COUNTIN:=0;                              00010018
+  COUNTIN:=COUNTIN+1;                                                   00011416
+  IF COUNTIN = 1 THEN IN REDUCE(ABL2);                                  00011505
+  IF COUNTIN = 2 THEN IN REDUCE(ABL3);                                  00011606
+  COMMENT IF COUNTIN = 4 THEN IN REDUCE(  ???  );                       00011802
+  COUNTIN:=0;                                                           00012719
+  END;                                                                  00020006
+

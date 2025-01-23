@@ -1,0 +1,18 @@
+ %   EY  IST DIE DREHMATRIX UM DIE Y-ACHSE     $                        00020011
+  MATRIX EY(5,5)$                                                       00030011
+  MATRIX EYI(5,5)$                                                      00050008
+  CY:=COS(Y)$                                                           00070008
+  SY:=SIN(Y)$                                                           00080008
+  SQY3:=SQRT(3)$                                                        00090008
+  EY := MAT( ( (2-3*SY*SY)/2 , SQY3*SY*CY , 0 , SQY3*SY*SY/2 , 0 ) ,    00180008
+             (  -SQY3*SY*CY  , CY*CY-SY*SY, 0 ,    SY*CY     , 0 ) ,    00190008
+             (      0        ,      0     , CY,      0       , SY) ,    00200008
+             (  SQY3*SY*SY/2 ,   -CY*SY   , 0 , (2-SY*SY)/2  , 0 ) ,    00210008
+             (      0        ,      0     ,-SY,      0       , CY) )$   00220008
+  EYI:= MAT( ( (2-3*SY*SY)/2 ,-SQY3*SY*CY , 0 , SQY3*SY*SY/2 , 0 ) ,    00230009
+             (   SQY3*SY*CY  , CY*CY-SY*SY, 0 ,   -SY*CY     , 0 ) ,    00240009
+             (      0        ,      0     , CY,      0       ,-SY) ,    00250009
+             (  SQY3*SY*SY/2 ,    CY*SY   , 0 , (2-SY*SY)/2  , 0 ) ,    00260009
+             (      0        ,      0     , SY,      0       , CY) )$   00270009
+  END$                                                                  00470005
+

@@ -1,0 +1,11 @@
+% DIES IST DIE MATRIX , MIT DER DIE 4 KOEFFIZIENTEN VOR       $
+% I1**4 , I1**2 * I2 , I2**2 , I1*I3  AUSGERECHENET WURDEN,   $
+% SO DASS DIE SUMME I4 ERGIBT !                               $
+%MATRIX AA(4,4),BB(4,1);
+%AA := MAT( (  1 ,      1 ,        1 ,         1  ) ,
+%           (  0 ,   8/7  ,   16/7   ,  104/49    ) ,
+%           (  0 ,   8/7  , 3*416/441,  104/49    ) ,
+%           (  0 ,   8/7  , 3*160/147, 3*40/147   ) );
+%BB := MAT( (   1   ), ( 1184/343) ,( 1648/441) , (400/343) );
+$END$
+

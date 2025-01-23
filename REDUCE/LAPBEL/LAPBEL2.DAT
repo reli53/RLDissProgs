@@ -1,0 +1,19 @@
+LBENT:= LB + DF(LB,B)*BS + DF(LB,BT)*BST + DF(LB,BF)*BSF                00010009
+      + DF(LB,BTT)*BSTT + DF(LB,BFF)*BSFF + DF(LB,BTF)*BSTF             00020009
+      + 1/2*( DF(LB,B,2)*BS*BS + DF(LB,BT,2)*BST**2                     00030009
+            + DF(LB,BF,2)*BSF*BSF + DF(LB,BTF,2)*BSTF**2                00040009
+            + DF(LB,BFF,2)*BSFF*BSFF + DF(LB,BTT,2)*BSTT**2 )           00050009
+      +  DF(LB,B,BT)*BS*BST + DF(LB,B,BF)*BS*BSF                        00060009
+      +  DF(LB,B,BTT)*BS*BSTT + DF(LB,B,BFF)*BS*BSFF                    00070009
+      +  DF(LB,B,BTF)*BS*BSTF + DF(LB,BT,BF)*BST*BSF                    00080009
+      +  DF(LB,BT,BTT)*BST*BSTT + DF(LB,BT,BFF)*BST*BSFF                00090009
+      +  DF(LB,BT,BTF)*BST*BSTF + DF(LB,BF,BTT)*BSF*BSTT                00100009
+      +  DF(LB,BF,BFF)*BSF*BSFF + DF(LB,BF,BTF)*BSF*BSTF                00110009
+      +  DF(LB,BTT,BFF)*BSTT*BSFF                                       00120009
+      +  DF(LB,BTT,BTF)*BSTT*BSTF                                       00121009
+      +  DF(LB,BFF,BTF)*BSFF*BSTF $                                     00130009
+BSF:=OF(BS)$ BST:=OT(BS)$ BSTT:=OT(BST)$ BSFF:=OF(BSF)$ BSTF:=OT(BSF)$  00131009
+BSFT:=OF(BST)$            B:=B0$ BT:=0$ BF:=0$ BTT:=0$ BFF:=0$ BTF:=0$  00140009
+ON DIV$                                                                 00141012
+END;                                                                    00150006
+

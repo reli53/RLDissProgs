@@ -1,0 +1,48 @@
+
+APPrOXIMATION  DER 2. ten  ABLEITUNG (mit 3 aequidist. punkten):
+
+               2
+MAT(1,1) := 1/D
+
+                    2
+MAT(2,1) := ( - 2)/D
+
+               2
+MAT(3,1) := 1/D
+
+
+APPrOXIMATION  DER 2. ten  ABLEITUNG (mit 5 aequidist. punkten):
+
+                        2
+MAT(1,1) := ( - 1)/(12*D )
+
+                  2
+MAT(2,1) := 4/(3*D )
+
+                       2
+MAT(3,1) := ( - 5)/(2*D )
+
+                  2
+MAT(4,1) := 4/(3*D )
+
+                        2
+MAT(5,1) := ( - 1)/(12*D )
+
+
+APPrOXIMATION  DER 3. ten  ABLEITUNG (mit 5 aequidist. punkten):
+
+                       3
+MAT(1,1) := ( - 1)/(4*D )
+
+                  3
+MAT(2,1) := 1/(2*D )
+
+MAT(3,1) := 0
+
+                       3
+MAT(4,1) := ( - 1)/(2*D )
+
+                  3
+MAT(5,1) := 1/(4*D )
+
+

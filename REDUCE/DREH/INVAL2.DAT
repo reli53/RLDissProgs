@@ -1,0 +1,21 @@
+QAA1S  :=  ( A1S**2 + (A2S**2+A3S**2)/2 - (A4S**2+A5S**2) )$            00020002
+QAA2S  :=  ( A1S*A2S + SQRT(3)*(A2S*A4S + A3S*A5S) )       $            00030002
+QAA3S  :=  ( A1S*A3S + SQRT(3)*(A2S*A5S - A3S*A4S) )       $            00040002
+QAA4S  :=  ( - 2*A1S*A4S + SQRT(3)*(A2S**2-A3S**2)/2 )     $            00050002
+QAA5S  :=  ( - 2*A1S*A5S + SQRT(3)*( 2*A2S*A3S   )/2 )     $            00060002
+QBB1S  :=  ( B1S**2 + (B2S**2+B3S**2)/2 - (B4S**2+B5S**2) )$            00061002
+QBB2S  :=  ( B1S*B2S + SQRT(3)*(B2S*B4S + B3S*B5S) )       $            00062002
+QBB3S  :=  ( B1S*B3S + SQRT(3)*(B2S*B5S - B3S*B4S) )       $            00063002
+QBB4S  :=  ( - 2*B1S*B4S + SQRT(3)*(B2S**2-B3S**2)/2 )     $            00064002
+QBB5S  :=  ( - 2*B1S*B5S + SQRT(3)*( 2*B2S*B3S   )/2 )     $            00065002
+IAAS  :=  A1S* A1S +  A2S* A2S +  A3S* A3S +  A4S* A4S +  A5S* A5S$     00065101
+IABS  :=  A1S* B1S +  A2S* B2S +  A3S* B3S +  A4S* B4S +  A5S* B5S$     00065201
+IBBS  :=  B1S* B1S +  B2S* B2S +  B3S* B3S +  B4S* B4S +  B5S* B5S$     00065301
+IAAAS :=  A1S*QAA1S +  A2S*QAA2S +  A3S*QAA3S +  A4S*QAA4S +  A5S*QAA5S$00066002
+IABBS :=  A1S*QBB1S +  A2S*QBB2S +  A3S*QBB3S +  A4S*QBB4S +  A5S*QBB5S$00066102
+IBAAS :=  B1S*QAA1S +  B2S*QAA2S +  B3S*QAA3S +  B4S*QAA4S +  B5S*QAA5S$00066202
+IBBBS :=  B1S*QBB1S +  B2S*QBB2S +  B3S*QBB3S +  B4S*QBB4S +  B5S*QBB5S$00066302
+IAAAAS:=QAA1S*QAA1S +QAA2S*QAA2S +QAA3S*QAA3S +QAA4S*QAA4S +QAA5S*QAA5S$00066402
+IAABBS:=QAA1S*QBB1S +QAA2S*QBB2S +QAA3S*QBB3S +QAA4S*QBB4S +QAA5S*QBB5S$00067002
+$END$                                                                   00068002
+

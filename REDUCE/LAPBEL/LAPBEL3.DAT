@@ -1,0 +1,10 @@
+FOR ALL X LET   OF(OT(X))=OT(OF(X))$                                    00140101
+FOR ALL X,Y LET OF(X*Y)=X*OF(Y)+Y*OF(X)$                                00140201
+FOR ALL X,Y LET OT(X*Y)=X*OT(Y)+Y*OT(X)$                                00140301
+OPERATOR L2$                                                            00140402
+FOR ALL X LET                                                           00145806
+  OT(OT(X)) + COS(TH)/SIN(TH)* OT(X) + (1/SIN(TH))**2*OF(OF(X))=-L2(X)$ 00146806
+FOR ALL X,Y LET   OT(X)*OT(Y)+(1/SIN(TH))**2 *OF(X)*OF(Y)=              00147806
+                                ( X*L2(Y) + Y*L2(X) - L2(X*Y) )/2$      00148806
+$END$                                                                   00150007
+

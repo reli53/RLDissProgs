@@ -1,0 +1,11 @@
+  IF NOT(NUMBERP COUNTIN) THEN COUNTIN:=0$                              00001014
+  COUNTIN:=COUNTIN+1$                                                   00009514
+  IF COUNTIN = 1 THEN IN REDUCE(DREHMATX);                              00009607
+  IF COUNTIN = 2 THEN IN REDUCE(DREHMATY);                              00009712
+  IF COUNTIN = 3 THEN IN REDUCE(DREHMATZ);                              00009812
+  IF COUNTIN = 4 THEN IN REDUCE(INVARIAN);                              00009915
+  IF COUNTIN = 5 THEN IN REDUCE(INVARI2);                               00010016
+  IF COUNTIN = 6 THEN IN REDUCE(INVARI3);                               00010117
+  COUNTIN:=0$                                                           00010217
+  $END$                                                                 00010317
+

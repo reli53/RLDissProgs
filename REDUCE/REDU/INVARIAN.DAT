@@ -1,0 +1,17 @@
+MATRIX  VA(5,1),VB(5,1),EZAL(5,5),EXBE(5,5),EZGA(5,5)$                  00011017
+VA := MAT ( (A1) , (A2) , (A3) , (A4) , (A5) )$                         00020016
+VB := MAT ( (B1) , (B2) , (B3) , (B4) , (B5) )$                         00030017
+Z:=AL$ EZAL:= EZ$ Z:=GA$ EZGA:=EZ$ X:=BE$ EXBE:=EX$                     00070024
+MATRIX VAS(5,1)$        VAS:= EZGA*EXBE*EZAL*VA$     A1S:=VAS(1,1)$     00080020
+      A2S:=VAS(2,1)$ A3S:=VAS(3,1)$ A4S:=VAS(4,1)$ A5S:=VAS(5,1)$       00081020
+MATRIX VBS(5,1)$        VBS:= EZGA*EXBE*EZAL*VB$     B1S:=VBS(1,1)$     00081525
+      B2S:=VBS(2,1)$ B3S:=VBS(3,1)$ B4S:=VBS(4,1)$ B5S:=VBS(5,1)$       00081625
+IAAS  :=      A1S**2 + A2S**2 + A3S**2 + A4S**2 + A5S**2  $             00081725
+IBBS  :=      B1S**2 + B2S**2 + B3S**2 + B4S**2 + B5S**2  $             00082117
+IABS  :=      A1S*B1S+ A2S*B2S+ A3S*B3S+ A4S*B4S+ A5S*B5S $             00082217
+IAAAS :=  A1S*( A1S**2 + (A2S**2+A3S**2)*3/2 - 3*(A4S**2+A5S**2) )      00083017
+  + SQRT(3)*( A4S*(A2S**2-A3S**2) + A5S*(2*A2S*A3S) )*3/2  $            00084025
+IBBBS :=  B1S*( B1S**2 + (B2S**2+B3S**2)*3/2 - 3*(B4S**2+B5S**2) )      00085025
+  + SQRT(3)*( B4S*(B2S**2-B3S**2) + B5S*(2*B2S*B3S) )*3/2  $            00086025
+$END$                                                                   00100026
+

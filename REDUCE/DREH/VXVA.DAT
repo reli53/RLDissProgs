@@ -1,0 +1,20 @@
+MATRIX VX(3,1),VXS(3,1),VA(5,1),VAS(5,1)$                               00010000
+VXS := MAT( (XS) , (YS) , (ZS) )$       VX := DMATI*VXS$                00020000
+X := VX(1,1)$  Y := VX(2,1)$  Z := VX(3,1)$                             00030000
+R := X*X + Y*Y + Z*Z$      RS:= XS*XS + YS*YS + ZS*ZS$                  00040002
+KFF := ( A*(2*Z*Z-X*X-Y*Y) + B1*(2*X*Z)*SQRT(3) + B2*(2*Y*Z)*SQRT(3)    00050003
+         + C1*(X*X-Y*Y)*SQRT(3) + C2*(2*X*Y)*SQRT(3) )/R $              00060000
+KFFS:= ( AS*(2*ZS*ZS-XS*XS-YS*YS)                                       00061002
+         + B1S*(2*XS*ZS)*SQRT(3) + B2S*(2*YS*ZS)*SQRT(3)                00061102
+         + C1S*(XS*XS-YS*YS)*SQRT(3) + C2S*(2*XS*YS)*SQRT(3) )/RS $     00062002
+H1:= 2*Z*Z - Y*Y - X*X   - ( 2*ZS*ZS - YS*YS - XS*XS)$                  00063003
+H2:= SQRT(3) *(2*X*Z - 2*XS*ZS)$      H3:=SQRT(3)*(2*Y*Z - 2*YS*ZS)$    00064003
+H4:= SQRT(3)*(X*X-Y*Y -XS*XS+YS*YS)$  H5:=SQRT(3)*(2*X*Y - 2*XS*YS)$    00065004
+COMMENT BERECHNUNG DER ERZEUGENDEN HII = I-TE ZEILE$                    00065105
+H11:= SUB(TH=0, H1) + SUB( TH=0 , DF(H1,TH) )$                          00066005
+H22:= SUB(TH=0, H2) + SUB( TH=0 , DF(H2,TH) )$                          00067005
+H33:= SUB(TH=0, H3) + SUB( TH=0 , DF(H3,TH) )$                          00068005
+H44:= SUB(TH=0, H4) + SUB( TH=0 , DF(H4,TH) )$                          00069005
+H55:= SUB(TH=0, H5) + SUB( TH=0 , DF(H5,TH) )$                          00069105
+$END$                                                                   00070000
+

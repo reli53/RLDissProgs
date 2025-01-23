@@ -1,0 +1,10 @@
+R:=SQRT( AM(0)*AM(0)-2*AM(1)*AM(-1)+2*AM(2)*AM(-2)-2*AM(3)*AM(-3) )$    00010001
+O(A):=EPS*A + ALP*FM(0) + BET*R**2 * A$                                 00011002
+O(B1):=EPS*B1 -SQ2/2*ALP*( FM(1)-FM(-1) ) + BET*R**2 * B1$              00012002
+O(B2):=EPS*B2 -I*SQ2/2*ALP*( FM(1)+FM(-1) ) + BET*R**2 * B2$            00013002
+O(C1):=EPS*C1 +SQ2/2*ALP*( FM(2)+FM(-2) ) + BET*R**2 * C1$              00014002
+O(C2):=EPS*C2 +I*SQ2/2*ALP*( FM(2)-FM(-2) ) + BET*R**2 * C2$            00015002
+O(D1):=EPS*D1 -SQ2/2*ALP*( FM(3)-FM(-3) ) + BET*R**2 * D1$              00016002
+O(D2):=EPS*D2 -I*SQ2/2*ALP*( FM(3)+FM(-3) ) + BET*R**2 * D2$            00017002
+$END$                                                                   00020000
+

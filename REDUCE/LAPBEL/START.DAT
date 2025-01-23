@@ -1,0 +1,8 @@
+  IF NOT(NUMBERP COUNTIN) THEN COUNTIN:=0;                              00010018
+  COUNTIN:=COUNTIN+1;                                                   00011416
+  IF COUNTIN = 1 THEN IN REDUCE(LAPBEL);                                00011516
+  IF COUNTIN = 2 THEN IN REDUCE(LAPBEL2A);                              00011620
+  IF COUNTIN = 3 THEN IN REDUCE(LAPBEL3);                               00011716
+  COUNTIN:=0;                                                           00012719
+  END;                                                                  00020006
+

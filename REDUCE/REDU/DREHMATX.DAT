@@ -1,0 +1,18 @@
+ %     EX IST DREHMATRIX UM DIE X-ACHSE      $                          00010016
+  MATRIX EX(5,5)$                                                       00020016
+  MATRIX EXI(5,5)$                                                      00040005
+  CX:=COS(X)$                                                           00070005
+  SX:=SIN(X)$                                                           00080005
+  SQX3:=SQRT(3)$                                                        00090008
+  EX := MAT( ( (2-3*SX*SX)/2 , 0 ,-SQX3*SX*CX ,-SQX3*SX*SX/2 , 0 ) ,    00120008
+             (      0        , CX,     0      ,      0       ,-SX) ,    00130008
+             (   SQX3*SX*CX  , 0 , CX*CX-SX*SX,    SX*CX     , 0 ) ,    00140010
+             ( -SQX3*SX*SX/2 , 0 ,  -CX*SX    , (2-SX*SX)/2  , 0 ) ,    00150008
+             (      0        , SX,     0      ,      0       , CX) )$   00160008
+  EXI:= MAT( ( (2-3*SX*SX)/2 , 0 ,  SQX3*SX*CX, -SQX3*SX*SX/2, 0 ) ,    00300008
+             (      0        , CX,     0      ,      0       , SX) ,    00310008
+             (  -SQX3*SX*CX  , 0 , CX*CX-SX*SX,   -SX*CX     , 0 ) ,    00320010
+             ( -SQX3*SX*SX/2 , 0 ,   CX*SX    , (2-SX*SX)/2  , 0 ) ,    00330008
+             (      0        ,-SX,     0      ,      0       , CX) )$   00340008
+  END$                                                                  00350014
+

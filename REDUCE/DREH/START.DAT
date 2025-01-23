@@ -1,0 +1,9 @@
+  IF NOT(NUMBERP COUNTIN) THEN COUNTIN:=0;                              00010018
+  COUNTIN:=COUNTIN+1;                                                   00011416
+  IF COUNTIN = 1 THEN IN REDUCE(DREHMAT);                               00011500
+  IF COUNTIN = 2 THEN IN REDUCE(VXVA);                                  00011601
+  IF COUNTIN = 3 THEN IN REDUCE(ERZEUGER);                              00011702
+  COMMENT IF COUNTIN = 4 THEN IN REDUCE(  ???  );                       00011802
+  COUNTIN:=0;                                                           00012719
+  END;                                                                  00020006
+

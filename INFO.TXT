@@ -1,0 +1,13 @@
+
+
+     Das Graphik-Programm fuer   MA86OD3V.FORT
+     ist das Programm         OBERFD.FORT(PIC1) .
+
+     Das Graphik-Programm fuer   NOCIRCLE.FORT(OD2EV)
+     ist das Programm         PIC2V.FORT .
+
+     Das Graphik-Programm fuer   PIC3DPR.FORT
+     ist das Programm         PIC3D.FORT .
+
+
+

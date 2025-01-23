@@ -1,0 +1,15 @@
+ARRAY X(6),XS(6)$                               XS(6):=BSTF$            00010007
+X(1):=B$   X(2):=BT$   X(3):=BF$   X(4):=BTT$   X(5):=BFF$   X(6):=BTF$ 00020013
+XS(1):=BS$ XS(2):=BST$ XS(3):=BSF$ XS(4):=BSTT$ XS(5):=BSFF$            00021000
+                                                                        00022006
+LB0 := SUB(B=B0,BT=0,BF=0,BTT=0,BFF=0,BTF=0, LB )$                      00031007
+LB1 := FOR K:=1:6 SUM                                                   00032007
+       SUB(B=B0,BT=0,BF=0,BTT=0,BFF=0,BTF=0, DF(LB,X(K))*XS(K) )$       00033007
+LB2 := FOR K:=1:6 SUM ( FOR J:=1:6 SUM                                  00043007
+  SUB(B=B0,BT=0,BF=0,BTT=0,BFF=0,BTF=0, DF(LB,X(K),X(J))*XS(K)*XS(J) )  00053009
+                /2    )$                                                00063012
+BSF:=OF(BS)$ BST:=OT(BS)$ BSTT:=OT(BST)$ BSFF:=OF(BSF)$ BSTF:=OT(BSF)$  00131009
+BSFT:=OF(BST)$                                                          00140000
+ON DIV$                                                                 00141012
+$END$                                                                   00150011
+

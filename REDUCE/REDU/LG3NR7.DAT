@@ -1,0 +1,21 @@
+OPERATOR O$
+FOR ALL X   LET O(-X)=-O(X) ,  O(SQRT(X))=O(X) / (SQRT(X)*2)$
+FOR ALL X,Y LET O(X+Y)=O(X)+O(Y) , O(X*Y)=X*O(Y)+Y*O(X) $
+FOR ALL X,Y SUCH THAT NUMBERP Y LET O(X**Y)=Y*X**(Y-1) *O(X)$
+FOR ALL X,Y LET O(X/Y)= (Y*O(X)-X*O(Y))/(Y*Y)$
+FOR ALL X SUCH THAT NUMBERP X LET O(X)=0$
+LET O(Q)=0,O(QQ)=0$              KA :=Q*K1A  + QQ*R*R*A $
+KB1:=Q*K1B1 + QQ*R*R*B1$         KB2:=Q*K1B2 + QQ*R*R*B2$
+KC1:=Q*K1C1 + QQ*R*R*C1$         KC2:=Q*K1C2 + QQ*R*R*C2$
+KD1:=Q*K1D1 + QQ*R*R*D1$         KD2:=Q*K1D2 + QQ*R*R*D2$
+      Q:=1$    QQ:=0$
+O(A) := EPS*A  + ALP*KA  + BET * R*R* A $
+O(B1):= EPS*B1 + ALP*KB1 + BET * R*R* B1$
+O(B2):= EPS*B2 + ALP*KB2 + BET * R*R* B2$
+O(C1):= EPS*C1 + ALP*KC1 + BET * R*R* C1$
+O(C2):= EPS*C2 + ALP*KC2 + BET * R*R* C2$
+O(D1):= EPS*D1 + ALP*KD1 + BET * R*R* D1$
+O(D2):= EPS*D2 + ALP*KD2 + BET * R*R* D2$
+OKA :=O(KA )$ OKB1:=O(KB1)$ OKB2:=O(KB2)$ OKC1:=O(KC1)$
+OKC2:=O(KC2)$ OKD1:=O(KD1)$ OKD2:=O(KD2)$ $END$
+

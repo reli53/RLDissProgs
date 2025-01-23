@@ -1,0 +1,34 @@
+
+           (-2)
+ - L2(X)*B0
+
+WRITE 'LAPBEL  0 TER ORDNUNG: ';$$$  LB1;
+
+***** Improper delimiter
+
+  (-4)                (-1)                                      (-1
+B0    *( - 1/2*SIN(TH)    *COS(TH)*L2(X*BS)*OT(BS) + 1/2*SIN(TH)
+
+        )                                      (-1)
+         *COS(TH)*L2(X)*OT(BS)*BS + 1/2*SIN(TH)    *COS(TH)*L2(BS)*
+
+                          (-2)                              (-2)
+        OT(BS)*X + SIN(TH)    *L2(OF(X)*BS)*OF(BS) - SIN(TH)    *L2
+
+                                   (-2)
+        (OF(X))*OF(BS)*BS - SIN(TH)    *L2(BS)*OF(X)*OF(BS) +
+
+               (-2)                 2          (-3)
+        SIN(TH)    *OF(OF(X))*OT(BS)  + SIN(TH)    *COS(TH)*OF(X)*
+
+                               (-3)               2
+        OF(BS)*OT(BS) - SIN(TH)    *COS(TH)*OF(BS) *OT(X) +
+
+               (-4)                 2
+        SIN(TH)    *OF(OF(X))*OF(BS)  - 1/2*L2(X*BS)*L2(BS) + 1/2*
+
+                                      2             2             2
+        L2(X)*L2(BS)*BS + L2(X)*OT(BS)  - 3*L2(X)*BS  + 1/2*L2(BS)
+
+        *X)
+

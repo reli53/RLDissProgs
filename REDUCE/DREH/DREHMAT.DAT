@@ -1,0 +1,11 @@
+MATRIX D0(3,3),D1(3,3),D2(3,3),DMAT(3,3),DMATI(3,3),K(3,1)$             00010001
+D0 := MAT ( (1,0,0) , (0,1,0) , (0,0,1) )$                              00020000
+D1 := MAT ( (0,-KZ,KY) , ( KZ,0,-KX) , (-KY,KX,0) )$                    00030000
+D2 := MAT ( (KZ*KZ+KY*KY,-KX*KY,-KX*KZ) , (-KX*KY,KZ*KZ+KX*KX,-KY*KZ)   00040000
+                     , (-KX*KZ,-KZ*KY,KX*KX+KY*KY) )$                   00050000
+DMAT := D0 + SIN(TH)*D1 + ( COS(TH) - 1 )*D2$                           00060000
+DMATI:= D0 - SIN(TH)*D1 + ( COS(TH) - 1 )*D2$                           00061001
+KX*KX+KY*KY+KZ*KZ :=1$ COS(TH)**2 + SIN(TH)**2 :=1$                     00070000
+K := MAT( (KX) , (KY) , (KZ) )$                                         00080000
+$END$                                                                   00090000
+
